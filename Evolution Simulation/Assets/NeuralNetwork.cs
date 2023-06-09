@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class NeuralNetwork : MonoBehaviour
@@ -38,6 +38,26 @@ public class NeuralNetwork : MonoBehaviour
             }
         }
         return layers[layers.Length - 1].nodeArray;
+    }
+
+    public Layer[] CopyLayers()
+    {
+        Layer[] newLayers = new Layer[networkShape.Length - 1];
+        for(int i = 0; i < layers.Length; i++)
+        {
+            newLayers[i] = new Layer(networkShape[i], networkShape[i + 1]);
+            System.Array.Copy(layers[i].weightsArray, newLayers[i].weightsArray, layers[i].weightsArray.GetLength(0) * layers[i].weightsArray.GetLength(1));
+            System.Array.Copy(layers[i].biasesArray, newLayers[i].biasesArray, layers[i].biasesArray.GetLength(0));
+        }
+        return newLayers;
+    }
+
+    public void MutateNetwork(float chance, float amount)
+    {
+        for(int i = 0; i < layers.Length; i++)
+        {
+            layers[i].MutateLayer(chance, amount);
+        }
     }
 
     public class Layer
@@ -78,10 +98,24 @@ public class NeuralNetwork : MonoBehaviour
         {
             for(int i = 0; i < n_nodes; i++)
             {
+                //implement ReLU activation function
                 if (nodeArray[i] < 0)
                 {
                     nodeArray[i] = 0;
                 }
+            }
+        }
+        public void MutateLayer(float chance, float amount)
+        {
+            for(int i = 0; i < n_nodes; i++)
+            {
+                for(int j = 0; j < n_inputs; j++)
+                {
+                    if (Random.Range(0f, 1f) < chance)
+                        weightsArray[i, j] += Random.Range(-1f, 1f) * amount;
+                }
+                if (Random.Range(0f, 1f) < chance)
+                    biasesArray[i] += Random.Range(-1f, 1f) * amount;
             }
         }
     }

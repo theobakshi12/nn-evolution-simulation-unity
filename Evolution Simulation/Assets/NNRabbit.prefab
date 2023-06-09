@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 340560619189383443}
-  - component: {fileID: 340560619189383436}
+  - component: {fileID: -8204382403476835829}
+  - component: {fileID: 5027853712262970881}
   - component: {fileID: 6094391801464173234}
   - component: {fileID: 589150388252100020}
   m_Layer: 0
-  m_Name: Rabbit
+  m_Name: NNRabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &340560619189383436
+--- !u!114 &-8204382403476835829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,20 +45,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 340560619189383438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb64aee9c4a24141b12ab6ba4496121, type: 3}
+  m_Script: {fileID: 11500000, guid: cea1ab52c1eb1aa449b09a6435c6b12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generation: 0
+  parentSpeed: 2
+  speed: 2
+  turnSpeed: 180
   maxEnergy: 1
   energyLoss: 0.1
-  speed: 1000
-  perceptionRadius: 10
+  eyesightDetail: 5
+  fieldOfView: 90
+  viewDistance: 10
   eatingTime: 0.5
   breedingTime: 1
+  mutationChance: 0.02
+  mutationAmount: 1
+  startingMutationChance: 0.5
+  startingMutationAmount: 1
   energy: 1
   breedingUrge: 0
   male: 0
-  objectTarget: {fileID: 0}
-  roamTarget: {x: 0, y: 0, z: 0}
   food:
     serializedVersion: 2
     m_Bits: 8
@@ -65,8 +73,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   worldSize: 50
-  waitingForPartner: 0
-  fathersSpeed: 2
+--- !u!114 &5027853712262970881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340560619189383438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404fc0693ff06af4eb7b2dae0a09ae32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkShape: 050000002000000002000000
 --- !u!65 &6094391801464173234
 BoxCollider:
   m_ObjectHideFlags: 0

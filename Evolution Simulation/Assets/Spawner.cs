@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
         foreach(Agent agent in agents)
         {
             for (int i = 0; i < agent.startingCount; i++) {
-                Instantiate(agent.prefab, new Vector3(Random.Range(-worldSize, worldSize), 0, Random.Range(-worldSize, worldSize)), Quaternion.identity, transform);
+                GameObject spawn = Instantiate(agent.prefab, new Vector3(Random.Range(-worldSize, worldSize), 0, Random.Range(-worldSize, worldSize)), Quaternion.identity, transform);
             }
             agent.textDisplay.SetText(agent.name + ": " + agent.startingCount);
             agent.currentCount = agent.startingCount;

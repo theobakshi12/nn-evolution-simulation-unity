@@ -174,23 +174,6 @@ public class Rabbit : MonoBehaviour
         return false;
     }
 
-    private float[] Eyesight(int detail, float FOV, float viewDistance)
-    {
-        float[] distances = new float[detail];
-
-        for(int i =0; i < detail; i++)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward + new Vector3(0f, (FOV / (detail - 1) * i - FOV / 2), 0f), out hit, viewDistance))
-            {
-                if (hit.collider.CompareTag("Food"))
-                    distances[i] = hit.distance;
-            }
-            else distances[i] = viewDistance;
-        }
-        return distances;
-    }
-
     private Vector3 SetRoamTarget()
     {
         Vector3 roamTarget = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
