@@ -666,8 +666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1419723951182841461, guid: 7ef9730cf5dbc854e8f1e65bdb9db088, type: 3}
-  startingFood: 1000
-  growthRate: 0.1
+  startingFood: 100
+  growthRate: 0.2
   worldSize: 50
   count: 0
 --- !u!114 &1450369408
@@ -689,7 +689,7 @@ MonoBehaviour:
     name: Rabbit
     textDisplay: {fileID: 336272247}
   - prefab: {fileID: 340560619189383438, guid: 5aeadfc3d819a7048b5b85e9c9fd9cd6, type: 3}
-    startingCount: 2000
+    startingCount: 1000
     currentCount: 0
     name: Rabbit
     textDisplay: {fileID: 336272247}

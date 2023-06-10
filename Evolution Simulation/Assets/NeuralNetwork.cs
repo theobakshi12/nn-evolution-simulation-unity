@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NeuralNetwork : MonoBehaviour
 {
-    public int[] networkShape = { 5, 32, 2 };
+    public int[] networkShape = { 10, 32, 2 };
     public Layer[] layers;
 
     public void Awake()
@@ -57,6 +57,14 @@ public class NeuralNetwork : MonoBehaviour
         for(int i = 0; i < layers.Length; i++)
         {
             layers[i].MutateLayer(chance, amount);
+        }
+    }
+
+    public void AdjustNetwork(float chance, float amount)
+    {
+        for (int i = 0; i < layers.Length; i++)
+        {
+            layers[i].AdjustLayer(chance, amount);
         }
     }
 
@@ -116,6 +124,19 @@ public class NeuralNetwork : MonoBehaviour
                 }
                 if (Random.Range(0f, 1f) < chance)
                     biasesArray[i] += Random.Range(-1f, 1f) * amount;
+            }
+        }
+        public void AdjustLayer(float chance, float amount)
+        {
+            for (int i = 0; i < n_nodes; i++)
+            {
+                for (int j = 0; j < n_inputs; j++)
+                {
+                    if (Random.Range(0f, 1f) < chance)
+                        weightsArray[i, j] *= (1+ Random.Range(-1f, 1f) * amount);
+                }
+                if (Random.Range(0f, 1f) < chance)
+                    biasesArray[i] *= (1+Random.Range(-1f, 1f) * amount);
             }
         }
     }

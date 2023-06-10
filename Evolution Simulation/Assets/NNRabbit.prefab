@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5027853712262970881}
   - component: {fileID: 6094391801464173234}
   - component: {fileID: 589150388252100020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NNRabbit
-  m_TagString: Untagged
+  m_TagString: Rabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,17 +49,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generation: 0
-  parentSpeed: 2
   speed: 2
   turnSpeed: 180
+  size: 0.5
   maxEnergy: 1
-  energyLoss: 0.1
+  energyConsumptionMultiplier: 0.1
   eyesightDetail: 5
   fieldOfView: 90
   viewDistance: 10
   eatingTime: 0.5
   breedingTime: 1
-  mutationChance: 0.02
+  variationChance: 1
+  variationAmount: 0.05
+  mutationChance: 0.01
   mutationAmount: 1
   startingMutationChance: 0.5
   startingMutationAmount: 1
@@ -71,7 +73,7 @@ MonoBehaviour:
     m_Bits: 8
   rabbit:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   worldSize: 50
 --- !u!114 &5027853712262970881
 MonoBehaviour:
@@ -85,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fc0693ff06af4eb7b2dae0a09ae32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkShape: 050000002000000002000000
+  networkShape: 100000004000000002000000
 --- !u!65 &6094391801464173234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98,7 +100,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &589150388252100020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,7 +128,7 @@ GameObject:
   - component: {fileID: 340560619431943392}
   - component: {fileID: 340560619431943397}
   - component: {fileID: 340560619431943398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340560619431943393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
